@@ -1,0 +1,9 @@
+./JPString.xcodeproj
+*.DS_store
+JPString.podspec
+
+*.pbxproj
+
+JPString.xcodeproj/project.pbxproj
+
+*.xcuserstate
