@@ -25,9 +25,13 @@ class JPStringTests: XCTestCase {
 
     let jps = JPString()
 
-    XCTAssertEqual("ネコヲタベタ", jps.hiraToKata("ねこをたべた"))
-    XCTAssertEqual("ねこをたべた", jps.kataToHira("ネコヲタベタ"))
-    XCTAssertEqual("nekowotabeta", jps.hiraToRomaji("ねこをたべた"))
+	XCTAssertEqual("ネコヲタベタ", jps.hiraToKata("ねこをたべた"))
+	XCTAssertEqual("ネコヲdon't do itタベタ", jps.hiraToKata("ねこをdon't do itたべた"))
+	XCTAssertEqual("ねこをたべた", jps.kataToHira("ネコヲタベタ"))
+	XCTAssertEqual("ねこをwhy would you do thisたべた", jps.kataToHira("ネコヲwhy would you do thisタベタ"))
+	XCTAssertEqual("nekowotabeta", jps.hiraToRomaji("ねこをたべた"))
+	XCTAssertEqual("nekowotabeta@", jps.hiraToRomaji("ねこをたべた@"))
+	XCTAssertEqual("nihonniikimashita", jps.hiraToRomaji("にほんにいきました"))
     XCTAssertEqual("nekowotabeta", jps.kataToRomaji("ネコヲタベタ"))
 	XCTAssertEqual("ねこをたべた", jps.romajiToHira("nekowotabeta"))
 	XCTAssertEqual("だいがくいんはすっごくたいへんだった", jps.romajiToHira("daigakuinhasuggokutaihendatta"))

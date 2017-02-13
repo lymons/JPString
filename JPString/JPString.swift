@@ -15,16 +15,24 @@ Library to assist in transliteration between Japanese scripts and Latin script.
 */
 class JPString {
 
-	fileprivate var reading: [String] = ["a", "i", "u", "e", "o", "ka", "ki", "ku", "ke", "ko", "ga", "gi", "gu", "ge", "go", "sa", "shi", "su", "se", "so", "za", "ji", "zu", "ze", "zo", "ta", "chi", "tsu", "te", "to", "da", "ji", "zu", "de", "do", "na", "ni", "nu", "ne", "no", "ha", "hi", "fu", "he", "ho", "ba", "bi", "bu", "be", "bo", "pa", "pi", "pu", "pe", "po", "ma", "mi", "mu", "me", "mo", "ya", "", "yu", "", "yo", "ra", "ri", "ru", "re", "ro", "wa", "wi", "", "we", "wo", "n", "", "", "", "", "cha", "chi", "chu", "chu", "cho", "sha", "shi", "shu", "she", "sho", "ja", "ji", "ju", "je", "jo", "kya", "kyi", "kyu", "kye", "kyo", "nya", "nyi", "nyu", "nye", "nyo", "hya", "hyi", "hyu", "hye", "hyo", "mya", "myi", "myu", "mye", "myo", "rya", "ryi", "ryu", "rye", "ryo", "gya", "gyi", "gyu", "gye", "gyo", "bya", "byi", "byu", "bye", "byo", "pya", "pyi", "pyu", "pye", "pyo"]
+	fileprivate lazy var reading: [String] = ["a", "i", "u", "e", "o", "ka", "ki", "ku", "ke", "ko", "ga", "gi", "gu", "ge", "go", "sa", "shi", "su", "se", "so", "za", "ji", "zu", "ze", "zo", "ta", "chi", "tsu", "te", "to", "da", "ji", "zu", "de", "do", "na", "ni", "nu", "ne", "no", "ha", "hi", "fu", "he", "ho", "ba", "bi", "bu", "be", "bo", "pa", "pi", "pu", "pe", "po", "ma", "mi", "mu", "me", "mo", "ya", "", "yu", "", "yo", "ra", "ri", "ru", "re", "ro", "wa", "wi", "", "we", "wo", "n", "", "", "", "", "cha", "chi", "chu", "chu", "cho", "sha", "shi", "shu", "she", "sho", "ja", "ji", "ju", "je", "jo", "kya", "kyi", "kyu", "kye", "kyo", "nya", "nyi", "nyu", "nye", "nyo", "hya", "hyi", "hyu", "hye", "hyo", "mya", "myi", "myu", "mye", "myo", "rya", "ryi", "ryu", "rye", "ryo", "gya", "gyi", "gyu", "gye", "gyo", "bya", "byi", "byu", "bye", "byo", "pya", "pyi", "pyu", "pye", "pyo"]
 
-	fileprivate var hiragana: [String] = ["あ", "い", "う", "え", "お", "か", "き", "く", "け", "こ", "が", "ぎ", "ぐ", "げ", "ご", "さ", "し", "す", "せ", "そ", "ざ", "じ", "ず", "ぜ", "ぞ", "た", "ち", "つ", "て", "と", "だ", "ぢ", "づ", "で", "ど", "な", "に", "ぬ", "ね", "の", "は", "ひ", "ふ", "へ", "ほ", "ば", "び", "ぶ", "べ", "ぼ", "ぱ", "ぴ", "ぷ", "ぺ", "ぽ", "ま", "み", "む", "め", "も", "や", "", "ゆ", "", "よ", "ら", "り", "る", "れ", "ろ", "わ", "ゐ", "", "ゑ", "を", "ん", "", "", "", "", "ちゃ", "ち", "ちゅ", "ちぇ", "ちょ", "しゃ", "し", "しゅ", "しぇ", "しょ", "じゃ", "じ", "じゅ", "じぇ", "じょ", "きゃ", "きぃ", "きゅ", "きぇ", "きょ", "にゃ", "にぃ", "にゅ", "にぇ", "にょ", "ひゃ", "ひぃ", "ひゅ", "ひぇ", "ひょ", "みゃ", "みぃ", "みゅ", "みぇ", "みょ", "りゃ", "りぃ", "りゅ", "りぇ", "りょ", "ぎゃ", "ぎぃ", "ぎゅ", "ぎぇ", "ぎょ", "びゃ", "びぃ", "びゅ", "びぇ", "びょ", "ぴゃ", "ぴぃ", "ぴゅ", "ぴぇ", "ぴょ"]
+	fileprivate lazy var hiragana: [String] = ["あ", "い", "う", "え", "お", "か", "き", "く", "け", "こ", "が", "ぎ", "ぐ", "げ", "ご", "さ", "し", "す", "せ", "そ", "ざ", "じ", "ず", "ぜ", "ぞ", "た", "ち", "つ", "て", "と", "だ", "ぢ", "づ", "で", "ど", "な", "に", "ぬ", "ね", "の", "は", "ひ", "ふ", "へ", "ほ", "ば", "び", "ぶ", "べ", "ぼ", "ぱ", "ぴ", "ぷ", "ぺ", "ぽ", "ま", "み", "む", "め", "も", "や", "", "ゆ", "", "よ", "ら", "り", "る", "れ", "ろ", "わ", "ゐ", "", "ゑ", "を", "ん", "", "", "", "", "ちゃ", "ち", "ちゅ", "ちぇ", "ちょ", "しゃ", "し", "しゅ", "しぇ", "しょ", "じゃ", "じ", "じゅ", "じぇ", "じょ", "きゃ", "きぃ", "きゅ", "きぇ", "きょ", "にゃ", "にぃ", "にゅ", "にぇ", "にょ", "ひゃ", "ひぃ", "ひゅ", "ひぇ", "ひょ", "みゃ", "みぃ", "みゅ", "みぇ", "みょ", "りゃ", "りぃ", "りゅ", "りぇ", "りょ", "ぎゃ", "ぎぃ", "ぎゅ", "ぎぇ", "ぎょ", "びゃ", "びぃ", "びゅ", "びぇ", "びょ", "ぴゃ", "ぴぃ", "ぴゅ", "ぴぇ", "ぴょ"]
 
-	fileprivate var SOKUON: [Character] = ["r", "w", "n", "y", "p", "b", "f", "h", "g", "k", "j", "d", "m", "t", "z", "s", "c"]
+	fileprivate lazy var SOKUON: [Character] = ["r", "w", "n", "y", "p", "b", "f", "h", "g", "k", "j", "d", "m", "t", "z", "s", "c"]
 
 	fileprivate func rangeWithString(_ string: String, range: NSRange) -> Range<String.Index> {
 		return string.characters.index(string.startIndex, offsetBy: range.location) ..< string.characters.index(string.startIndex, offsetBy: range.location+range.length)
 	}
-
+	
+	fileprivate lazy var regex = try! NSRegularExpression(pattern: "(tsu)|([ztmdkghfbpyrwn](ya|yu|yo))|((sh|ch)?([aeiou]))|(([sztmdjkghfbpyrwn])?([aeiou]))|([rwnypbfhgkjdmtzsc])", options: [.caseInsensitive])
+	
+	
+	fileprivate let HIRAGANA_MIN: Int64 = 12353
+	fileprivate let HIRAGANA_MAX: Int64 = 12447
+	fileprivate let KATAKANA_MIN: Int64 = 12448
+	fileprivate let KATAKANA_MAX: Int64 = 12543
+	
 	/**
 	Transliterates latin script to katakana script.
 
@@ -51,14 +59,14 @@ class JPString {
 	- parameter text:The romaji string to act upon.
 	*/
 	func romajiToHira(_ text: String) -> String {
-//		return romajiToHira(text)
-		let regex = try! NSRegularExpression(pattern: "(tsu)|([ztmdkghfbpyrwn](ya|yu|yo))|((sh|ch)?([aeiou]))|(([sztmdjkghfbpyrwn])?([aeioun]))", options: [.caseInsensitive])
-
 		var copy = text.lowercased()
 		for match in regex.matches(in: copy, options: [], range: NSMakeRange(0, copy.characters.count)) {
 			let matchRange = rangeWithString(text, range: match.range)
-			let index = reading.index(of: text.substring(with: matchRange))
-			copy = copy.replacingOccurrences(of: text.substring(with: matchRange), with: hiragana[index!])
+			let character = text.substring(with: matchRange)
+			if let index = reading.index(of: character) {
+				print("index: \(index) and hiragana[\(hiragana[index])]")
+				copy = copy.replacingOccurrences(of: character, with: hiragana[index])
+			}
 		}
 
 		for char in copy.characters {
@@ -72,36 +80,48 @@ class JPString {
 
 	/**
 	Transliterates hiragana script to katakana script.
-
-	No checks are performed to ensure the entire string is wholly hiragana.
+	
+	Leaves non-hiragana characters as-is.
 
 	- returns: Returns `text` transliterated to katakana script.
 	- parameter text:The hiragana string to act upon.
 	*/
 	func hiraToKata(_ text: String) -> String {
 		return text.utf16.reduce("") {
-			$0 + String(describing: UnicodeScalar($1.advanced(by: 96))!)
+			var value = ""
+			if $1.toIntMax() >= HIRAGANA_MIN && $1.toIntMax() < HIRAGANA_MAX {
+				value = $0 + String(describing: UnicodeScalar($1.advanced(by: 96))!)
+			} else {
+				value = $0 + String(describing: UnicodeScalar($1)!)
+			}
+			return value
 		}
 	}
 
 	/**
 	Transliterates katakana script to hiragana script.
-
-	No checks are performed to ensure the entire string is wholly katakana.
+	
+	Leaves non-katakana characters as-is.
 
 	- returns: Returns `text` transliterated to hiragana script.
 	- parameter text:The katakana string to act upon.
 	*/
 	func kataToHira(_ text: String) -> String {
 		return text.utf16.reduce("") {
-			$0 + String(describing: UnicodeScalar($1.advanced(by: -96))!)
+			var value = ""
+			if $1.toIntMax() >= KATAKANA_MIN && $1.toIntMax() < KATAKANA_MAX {
+				value = $0 + String(describing: UnicodeScalar($1.advanced(by: -96))!)
+			} else {
+				value = $0 + String(describing: UnicodeScalar($1)!)
+			}
+			return value
 		}
 	}
 
 	/**
 	Transliterates katakana script to latin script.
-
-	No checks are performed to ensure the entire string is wholly katakana.
+	
+	Leaves non-katakana characters as-is.
 
 	- returns: Returns `text` transliterated to latin script.
 	- parameter text:The katakana string to act upon.
@@ -112,15 +132,21 @@ class JPString {
 
 	/**
 	Transliterates hiragana script to latin script.
-
-	No checks are performed to ensure the entire string is wholly hiragana.
+	
+	Leaves non-hiragana characters as-is.
 
 	- returns: Returns `text` transliterated to latin script.
 	- parameter text:The hiragana string to act upon.
 	*/
 	func hiraToRomaji(_ text: String) -> String {
-		return String(text.characters.reduce("") {
-			$0 + reading[hiragana.index(of: String($1))!]
+		return String(text.utf16.reduce("") {
+			if $1.toIntMax() >= HIRAGANA_MIN && $1.toIntMax() < HIRAGANA_MAX {
+				return $0 + reading[
+					hiragana.index(of: String(describing: UnicodeScalar($1)!))!
+				]
+			} else {
+				return $0 + String(describing: UnicodeScalar($1)!)
+			}
 		})
 	}
 
